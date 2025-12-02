@@ -1,0 +1,388 @@
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+        a { text-decoration: none; }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+
+        /* Header & Hero */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('./imgs/1_b8WS2iEvZCQYlXq46gKpqw.jpg') center/cover no-repeat;
+            color: white;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+       /* From Uiverse.io by StealthWorm */ 
+        .btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 13rem;
+        overflow: hidden;
+        height: 60px;
+        background-size: 300% 300%;
+        cursor: pointer;
+        backdrop-filter: blur(1rem);
+        border-radius: 5rem;
+        transition: 0.5s;
+        animation: gradient_301 5s ease infinite;
+        border: double 4px transparent;
+        background-image: linear-gradient(#212121, #212121),
+            linear-gradient(
+            137.48deg,
+            #ffdb3b 10%,
+            #fe53bb 45%,
+            #8f51ea 67%,
+            #0044ff 87%
+            );
+        background-origin: border-box;
+        background-clip: content-box, border-box;
+        display: flex;
+        width: 100%;
+        }
+
+        #container-stars {
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        transition: 0.5s;
+        backdrop-filter: blur(1rem);
+        border-radius: 5rem;
+        }
+
+        strong {
+        z-index: 2;
+        font-family: "Avalors Personal Use";
+        font-size: 18px;
+        letter-spacing: 5px;
+        color: #ffffff;
+        text-shadow: 0 0 4px white;
+        }
+
+        #glow {
+        position: absolute;
+        display: flex;
+        width: 12rem;
+        }
+
+        .circle {
+        width: 100%;
+        height: 30px;
+        filter: blur(2rem);
+        animation: pulse_3011 4s infinite;
+        z-index: -1;
+        }
+
+        .circle:nth-of-type(1) {
+        background: rgba(254, 83, 186, 0.636);
+        }
+
+        .circle:nth-of-type(2) {
+        background: rgba(142, 81, 234, 0.704);
+        }
+
+        .btn:hover #container-stars {
+        z-index: 1;
+        background-color: #212121;
+        }
+
+        .btn:hover {
+        transform: scale(1.1);
+        }
+
+        .btn:active {
+        border: double 4px #fe53bb;
+        background-origin: border-box;
+        background-clip: content-box, border-box;
+        animation: none;
+        }
+
+        .btn:active .circle {
+        background: #fe53bb;
+        }
+
+        #stars {
+        position: relative;
+        background: transparent;
+        width: 200rem;
+        height: 200rem;
+        }
+
+        #stars::after {
+        content: "";
+        position: absolute;
+        top: -10rem;
+        left: -100rem;
+        width: 100%;
+        height: 100%;
+        animation: animStarRotate 90s linear infinite;
+        }
+
+        #stars::after {
+        background-image: radial-gradient(#ffffff 1px, transparent 1%);
+        background-size: 50px 50px;
+        }
+
+        #stars::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -50%;
+        width: 170%;
+        height: 500%;
+        animation: animStar 60s linear infinite;
+        }
+
+        #stars::before {
+        background-image: radial-gradient(#ffffff 1px, transparent 1%);
+        background-size: 50px 50px;
+        opacity: 0.5;
+        }
+
+        @keyframes animStar {
+        from {
+            transform: translateY(0);
+        }
+
+        to {
+            transform: translateY(-135rem);
+        }
+        }
+
+        @keyframes animStarRotate {
+        from {
+            transform: rotate(360deg);
+        }
+
+        to {
+            transform: rotate(0);
+        }
+        }
+
+        @keyframes gradient_301 {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+        }
+
+        @keyframes pulse_3011 {
+        0% {
+            transform: scale(0.75);
+            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+        }
+
+        70% {
+            transform: scale(1);
+            box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+        }
+
+        100% {
+            transform: scale(0.75);
+            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+        }
+}
+
+
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            width: 100%;
+        }
+        .btn-secondary:hover { background: white; color: #333; }
+
+        /* Sections */
+        section { padding: 80px 0; }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+        }
+        .features {
+            background: #f9f9f9;
+            text-align: center;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+        .feature-card {
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .feature-card i {
+            font-size: 3rem;
+            color: #ff6b6b;
+            margin-bottom: 20px;
+        }
+
+        .how-it-works { background: white; }
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+        .step {
+            position: relative;
+        }
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: #ff6b6b;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 20px;
+        }
+
+        .testimonials {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .testimonial {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        .testimonial p { font-style: italic; }
+
+        .cta {
+            background: #ff6b6b;
+            color: white;
+            text-align: center;
+        }
+
+        footer {
+            background: #222;
+            color: #ddd;
+            padding: 50px 0;
+            text-align: center;
+        }
+        footer a { color: #ff6b6b; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .btn-secondary { margin-left: 0; margin-top: 15px; }
+        }
+
+       .hero-image {
+            position: relative;
+            width: 270px;
+            height: 270px;
+            max-width: 230px;
+            max-height: 230px;
+            
+            
+            /* This is the entire container */
+            padding: 6px;                    /* ← This controls border thickness */
+            border-radius: 50%;
+            
+            /* The magic: two backgrounds */
+            background: 
+                linear-gradient(137.48deg, 
+                #ffdb3b 10%, #fe53bb 45%, #8f51ea 67%, #0044ff 87%
+                ),
+                transparent;                  /* or your page background color */
+            
+            background-size: 300% 300%;
+            animation: gradient_301 5s ease infinite;
+            
+            /* This makes the gradient appear ONLY as a border */
+            background-clip: padding-box, border-box;
+            background-origin: border-box;
+        }
+
+        .hero-image > * {
+            z-index: 1;
+        }
+
+        .hero-image::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            max-width: 210px;
+            max-height: 210px;
+            left: 50%;
+            top: 50%;
+            opacity: 0.9;
+            transform: translate(-50%, -50%);
+            background: url('./imgs/Дизайн\ без\ названия\ \(21\).png') center/cover no-repeat;
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        .hero-image::after {
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 5px solid #fff;
+            background-color: #7FFF00;
+            border-radius: 50%;
+            background-size: cover;
+            top: 75%;
+            left: 75%;
+            z-index: 111;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        
