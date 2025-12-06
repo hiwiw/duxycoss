@@ -1,4 +1,4 @@
-
+/*
 
 
 const geos = {
@@ -33,3 +33,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 })
 
+*/
