@@ -214,7 +214,7 @@
 
         
         .btn-secondary {
-            background: transparent;
+            background: rgb(0.2, 0.2, 255);
             color: white;
             border: 2px solid white;
             width: 100%;
@@ -385,4 +385,5 @@
             max-width: 400px;
         }
         
+
         
