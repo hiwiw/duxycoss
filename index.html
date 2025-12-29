@@ -27,7 +27,7 @@
             height: 100%;
             align-items: center;
             text-align: center;
-            padding: 50px 15px;
+            padding: 80px 15px;
         }
         .container {
             display: flex;
@@ -44,6 +44,7 @@
             height: 270px;
             max-width: 230px;
             max-height: 230px;
+            box-shadow: 0 0 10px #fff;
             padding: 6px;
             border-radius: 50%;
             background:
@@ -90,7 +91,77 @@
             z-index: 111;
         }
 
-        
+        @media (max-width: 460px) {
+            .hero-center::after {
+                width: 25px;
+                height: 25px;
+            }
+        }
+
+        .heros {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin: 0px 0px 30px 0px;
+        }
+
+        .hero-small::before {
+            content: '';
+            max-width: 160px;
+            max-height: 160px;
+            width: 30vw;
+            height: 30vw;
+        }
+
+        .hero-center { 
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -53%);
+            box-shadow: 0 0 10px #fff;
+            z-index: 200;
+            width: 44vw;
+            height: 44vw;
+        }
+
+
+        .hero-center::before {
+            content: '';
+            width: 40vw;
+            height: 40vw;
+        }
+
+        .hero-left::before {
+            background: url('./🌹.jpg') center/cover no-repeat;
+        }
+
+        .hero-right::before {
+            background: url('./Без\ названия\ -\ 2025-12-25T125627.114.jpg') center/cover no-repeat;
+            
+        }
+
+        .hero-small {
+            max-width: 175px;
+            max-height: 175px;
+            opacity: 0.7;
+            margin: 0px 45px;
+            width: 34vw;
+            height: 34vw;
+        }
+
+        @media (max-width: 545px) {
+            .hero-small {
+                margin: 0px 25px;
+            }   
+        }
+
+        .hero-small::after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            border: 3px solid #fff;
+        }
 
         .step-age { 
             display: flex;
@@ -285,50 +356,27 @@
     <header>
         <div class="container hero">
 
-            <!-- Step 1: Age Verification -->
-            <div id="step-age">
-                <div class="step-age">
-                    <div class="hero-image"></div>
-                    <h1>She's Online 🟢</h1>
-                    <p>Are you 18 years or older?</p>
-               
-                
-                <div class="hero-buttons">
-                    <a class="btn" onclick="nextStep('step-interest')">
-                        <strong>Yes, I'm 18+ 💋</strong>
-                        <div id="container-stars"><div id="stars"></div></div>
-                        <div id="glow"><div class="circle"></div><div class="circle"></div></div>
-                    </a>
-                    <a class="btn" onclick="window.location.href='https://google.com'">
-                        <strong>No, exit</strong>
-                        <div id="container-stars"><div id="stars"></div></div>
-                        <div id="glow"><div class="circle"></div><div class="circle"></div></div>
-                    </a>
-                </div> </div>
-            </div>
-
             <!-- Step 2: What looking for -->
-            <div id="step-interest" class="hidden step-interest">
-                <div class="hero-image"></div>
-                <h1>What are you looking for? 🔥</h1>
-                <p>Choose and get connected instantly</p>
-                <div class="hero-buttons">
+            <div id="step-interest" class="step-interest">
+                <div class="heros" onclick="nextStep('step-gallery')">
+                    <div class="hero-image hero-left hero-small"></div>
+                    <div class="hero-image hero-center"></div>
+                    <div class="hero-image hero-right hero-small"></div>
+                </div>
+                <h1 style="margin: 0px 20px;">Girls Online Right Now 🟢</h1>
+                <p style="margin: 0px 20px;">Choose and get connected instantly</p>
+                <div class="hero-buttons" style="margin: 20px 20px;">
                     <a class="btn" onclick="redirectToCasualOffer()">
-                        <strong>Casual Chat 😘</strong>
+                        <strong> Chat Now 😘</strong>
                         <div id="container-stars"><div id="stars"></div></div>
                         <div id="glow"><div class="circle"></div><div class="circle"></div></div>
                     </a>
                     <a class="btn" onclick="nextStep('step-gallery')">
-                        <strong>Browse Girls 👀</strong>
+                        <strong>Search For Girls 👀</strong>
                         <div id="container-stars"><div id="stars"></div></div>
                         <div id="glow"><div class="circle"></div><div class="circle"></div></div>
-                    </a><a class="btn" onclick="redirectToDatingOffer()">
-                        <strong>Adult Fun 18+ 💦</strong>
-                        <div id="container-stars"><div id="stars"></div></div>
-                        <div id="glow"><div class="circle"></div><div class="circle"></div></div>
-                    </a>
-                    <a class="btn" onclick="redirectToDatingTTOffer()">
-                        <strong>Private Photos 💋 </strong>
+                    </a><a class="btn" onclick="redirectToTTOnlyDatingOffer()">
+                        <strong> Private Chat 💋 </strong>
                         <div id="container-stars"><div id="stars"></div></div>
                         <div id="glow"><div class="circle"></div><div class="circle"></div></div>
                     </a>
@@ -338,7 +386,11 @@
             <!-- Gallery -->
             <div id="step-gallery" class="hidden">
                 <div class="step-gallery">
-                    <div class="hero-image"></div>
+                    <div class="heros" onclick="nextStep('step-gallery')">
+                        <div class="hero-image hero-left hero-small"></div>
+                        <div class="hero-image hero-center"></div>
+                        <div class="hero-image hero-right hero-small"></div>
+                    </div>
                     <h1>Girls Online Right Now 🟢</h1>
                     <p>Pick one and start chatting!</p>
                     <div id="gallery" class="gallery">
@@ -392,6 +444,18 @@
                         <div class="girl-name">Luna, 31</div>
                         <a href="https://typpmrb.fun-meetconnect.com/nvnpmlz" class="btn"><strong>Chat Now 💬</strong><div id="container-stars"><div id="stars"></div></div><div id="glow"><div class="circle"></div><div class="circle"></div></div></a>
                     </div>
+                    <div class="girl-card">
+                        <div class="online-dot"></div>
+                        <img src="./🌹.jpg" alt="Olivia">
+                        <div class="girl-name">Lily, 29</div>
+                        <a href="https://typpmrb.fun-meetconnect.com/nvnpmlz" class="btn"><strong>Chat Now 💬</strong><div id="container-stars"><div id="stars"></div></div><div id="glow"><div class="circle"></div><div class="circle"></div></div></a>
+                    </div>
+                    <div class="girl-card">
+                        <div class="online-dot"></div>
+                        <img src="./Без названия - 2025-12-25T125627.114.jpg" alt="Ava">
+                        <div class="girl-name">Lucy, 32</div>
+                        <a href="https://typpmrb.fun-meetconnect.com/nvnpmlz" class="btn"><strong>Chat Now 💬</strong><div id="container-stars"><div id="stars"></div></div><div id="glow"><div class="circle"></div><div class="circle"></div></div></a>
+                    </div>
                     <!-- Добавь ещё, если хочешь -->
                 </div>
                 <div class="hero-buttons" style="margin-top: 40px;">
@@ -409,7 +473,6 @@
 
     <script>
         function nextStep(stepId) {
-            document.getElementById('step-age').classList.add('hidden');
             document.getElementById('step-interest').classList.add('hidden');
             document.getElementById('step-gallery').classList.add('hidden');
             document.getElementById(stepId).classList.remove('hidden');
@@ -421,17 +484,16 @@
             window.location.href = 'https://typpmrb.newsladyclub.com/nvc2z3p';
         }
 
-        function redirectToDatingTTOffer() {
-            // Твой основной смартлинк — он сам разберёт всё
-            window.location.href = 'https://typpmrb.partner-hookup.org/nvzwyne';
-        }
-        
         function redirectToCasualOffer() {
             // Твой основной смартлинк — он сам разберёт всё
             window.location.href = 'https://typpmrb.fun-meetconnect.com/nvnpmlz';
         }
+
+        function redirectToTTOnlyDatingOffer() {
+            // Твой основной смартлинк — он сам разберёт всё
+            window.location.href = 'https://typpmrb.partner-hookup.org/nvzwyne';
+        }
     </script>
 </body>
 </html>
-
 
