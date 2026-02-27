@@ -170,7 +170,7 @@
         }
 
         h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             margin-bottom: 1rem;
         }
         .hero p {
@@ -183,7 +183,6 @@
         .hero-buttons {
             display: flex;
             flex-direction: column;
-            align-items: center;
             gap: 20px;
             width: 100%;
             max-width: 600px;
@@ -357,7 +356,90 @@
         .btn-custom {
             display: flex; 
             gap: 15px;
+            background: rgba(255,255,255,0.25); 
+            padding: 10px;
+            justify-content: flex-start;
+            border-radius: 20px;
+            font-size: 20px;
+            text-align: left;
+            animation: grow 1.3s infinite alternate;
+            cursor: pointer;
         }
+
+        @keyframes grow {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.1);
+            }
+        }
+
+        .new-message {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            align-self: flex-start;
+        }
+
+        .btn-custom {
+            margin: 0px 0px 20px 0px ;
+        }
+
+        .btn-custom img {
+            object-fit: cover;
+            min-width: 100px;
+            border-radius: 50%;
+            max-height: 100px;
+            box-shadow: 1px 1px 10px whitesmoke;
+            max-width: 100px;
+        }
+
+        .new-message__image {
+            position: relative;
+        }
+
+        .new-message__image::before {
+            content: "";
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border: 3px solid #fff;
+            background-color: #7FFF00;
+            box-shadow: 0 0 10px #0f0;
+            border-radius: 50%;
+            top: 72%;
+            left: 72%;
+            z-index: 111;
+        }
+
+        .btn-custom span {
+            padding: 10px 0px 0px 0px;
+            font-size: 18px;
+            text-shadow: 1px 1px 10px black;
+            align-self: flex-start;
+        }
+
+        .btn-custom strong {
+            text-shadow: 1px 1px 10px black;
+            letter-spacing: 2px;
+        }
+
+        .new-message__button {
+            padding: 7px 10px ;
+            background-color: #0f0;
+            border-radius: 4px;
+            margin: 10px 0px 0px 0px;
+            transition: all 0.1s;
+            cursor: pointer;
+        }
+        
+
+        .new-message__button:hover {
+            transform: scale(0.9);
+        }
+
         
         .hidden { display: none; }
 
@@ -379,19 +461,20 @@
                     <div class="hero-image hero-center"></div>
                     <div class="hero-image hero-right hero-small"></div>
                 </div>
-                <h1 style="margin: 0px 20px;"> Girls online near you 💋 </h1>
+                <h1 style="margin: 0px 20px;"> 23 Girls Online Near You 💋 </h1>
                 <p style="margin: 0px 20px;">Click and chat... or too shy to start? 🥰</p>
                 <div class="hero-buttons" style="margin: 20px 20px;">
-                    <a class="btn btn-custom" onclick="redirectToDatingOffer()">
-                        <img src="./Без названия - 2025-12-13T175727.567.jpg" alt="Flora" />
+                    <div class="btn-custom" onclick="redirectToDatingOffer()">
+                        <div class="new-message__image"> <img src="./diwa.jpg" alt="Flora" /></div>
+                        
                         <div class="new-message"> 
-                            <strong> Flora, 27 years old, 5 km from you </strong>
-                            <p> Heey honey 🥰, what do you do this evening? ☺️ </p>
-                            <div id="container-stars"><div id="stars"></div></div>
-                            <div id="glow"><div class="circle"></div><div class="circle"></div></div>
+                            <strong> Flora, 27 years old, 1 km from you </strong>
+                            <span> Heey honey 🥰, what do you do this evening? ☺️ </span>
+                            <button type="button" class="new-message__button">Reply</button>
                         </div> 
-                    </a><a class="btn" onclick="redirectToTTOnlyDatingOffer()">
-                        <strong> Private Photos 💋 </strong>
+                    </div>
+                    <a class="btn" onclick="redirectToDatingOffer()">
+                        <strong> Click to reply 💋 </strong>
                         <div id="container-stars"><div id="stars"></div></div>
                         <div id="glow"><div class="circle"></div><div class="circle"></div></div>
                     </a>
@@ -511,7 +594,6 @@
     </script>
 </body>
 </html>
-
 
 
 
