@@ -788,64 +788,74 @@
   </div>
 
   <script>
-// Ждём полной загрузки DOM
-document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
 
-    // ====================== 1. Подтверждение возраста ======================
-  
+        // 1. Подтверждение возраста
+        const ageYesBtn = document.querySelector('.btn-yes');
+        if (ageYesBtn) {
+            ageYesBtn.addEventListener('click', function() {
+                fbq('trackCustom', 'AgeConfirmed');
+                console.log('%c AgeConfirmed отправлено', 'color: #28a745; font-weight: bold');
+            });
+        }
 
-    // Функция с задержкой для надёжной отправки события перед редиректом
-    function redirectWithEvent(url) {
-        setTimeout(() => {
-            window.location.href = url;
-        }, 400);   // 280мс — оптимальная задержка
-    }
+        // 2. Функция отправки Lead + задержка
+        function sendLeadEvent() {
+            fbq('track', 'Lead');
+            console.log('%c Lead событие отправлено!', 'color: #fe53bb; font-weight: bold');
+        }
 
-    // Переопределяем твои redirect-функции с отслеживанием
-    window.redirectToDatingOffer = function() {
-        redirectWithEvent('https://typpmrb.newsladyclub.com/nvc2z3p');
-    };
+        function redirectWithEvent(url) {
+            sendLeadEvent();
+            setTimeout(() => {
+                window.location.href = url;
+            }, 280);
+        }
 
-    window.redirectToCasualOffer = function() {
-        redirectWithEvent('https://typpmrb.fun-meetconnect.com/nvnpmlz');
-    };
-
-    window.redirectToTTOnlyDatingOffer = function() {
-        redirectWithEvent('https://typpmrb.partner-hookup.org/nvzwyne');
-    };
-
-    // Дополнительно ловим кнопку "Reply"
-    const replyButton = document.querySelector('.new-message__button');
-    if (replyButton) {
-        replyButton.addEventListener('click', function() {
+        // Переопределяем функции редиректа
+        window.redirectToDatingOffer = function() {
             redirectWithEvent('https://typpmrb.newsladyclub.com/nvc2z3p');
-        });
-    }
+        };
 
-    // ====================== 3. Твои остальные функции ======================
-    window.enterSite = function() {
-        localStorage.setItem('ageVerified', 'true');
-        document.getElementById('age-gate').style.display = 'none';
-        console.log('%c Age gate passed', 'color: #28a745');
-    };
+        window.redirectToCasualOffer = function() {
+            redirectWithEvent('https://typpmrb.fun-meetconnect.com/nvnpmlz');
+        };
 
-    window.leaveSite = function() {
-        window.location.href = "https://www.google.com";
-    };
+        window.redirectToTTOnlyDatingOffer = function() {
+            redirectWithEvent('https://typpmrb.partner-hookup.org/nvzwyne');
+        };
 
-    window.nextStep = function(stepId) {
-        document.getElementById('step-interest').classList.add('hidden');
-        document.getElementById('step-gallery').classList.add('hidden');
-        document.getElementById(stepId).classList.remove('hidden');
-    };
+        // Кнопка Reply
+        const replyButton = document.querySelector('.new-message__button');
+        if (replyButton) {
+            replyButton.addEventListener('click', function() {
+                redirectWithEvent('https://typpmrb.newsladyclub.com/nvc2z3p');
+            });
+        }
 
-    // Проверка при загрузке страницы (возраст уже подтверждён)
-    if (localStorage.getItem('ageVerified') === 'true') {
-        const ageGate = document.getElementById('age-gate');
-        if (ageGate) ageGate.style.display = 'none';
-    }
+        // Остальные функции
+        window.enterSite = function() {
+            localStorage.setItem('ageVerified', 'true');
+            document.getElementById('age-gate').style.display = 'none';
+        };
 
-});
+        window.leaveSite = function() {
+            window.location.href = "https://www.google.com";
+        };
+
+        window.nextStep = function(stepId) {
+            document.getElementById('step-interest').classList.add('hidden');
+            document.getElementById('step-gallery').classList.add('hidden');
+            document.getElementById(stepId).classList.remove('hidden');
+        };
+
+        // Проверка age-gate
+        if (localStorage.getItem('ageVerified') === 'true') {
+            const ageGate = document.getElementById('age-gate');
+            if (ageGate) ageGate.style.display = 'none';
+        }
+
+    });
 </script>
 </body>
 </html>
