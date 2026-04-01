@@ -626,10 +626,8 @@
         }
         
     </style>
-</head>
 
-    <!-- Meta Pixel Code -->
-<script>
+    <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -644,6 +642,9 @@ fbq('track', 'PageView');
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=2171013446971522&ev=PageView&noscript=1"
 /></noscript>
+</head>
+
+    <!-- Meta Pixel Code -->
 <!-- End Meta Pixel Code -->
 <body>
 
@@ -783,70 +784,78 @@ src="https://www.facebook.com/tr?id=2171013446971522&ev=PageView&noscript=1"
   </div>
 
   <script>
+// Ждём полной загрузки DOM
+document.addEventListener('DOMContentLoaded', function() {
 
-      // 1. Подтверждение возраста (Age Gate)
-        document.querySelectorAll('button, .age-yes, #yes, [onclick*="enterSite"], .btn-yes').forEach(btn => {
-            btn.addEventListener('click', function() {
-                fbq('trackCustom', 'AgeConfirmed');   // или просто 'Lead'
-                console.log('AgeConfirmed отправлено'); // для теста
-            });
+    // ====================== 1. Подтверждение возраста ======================
+    const ageYesBtn = document.querySelector('.btn-yes');
+    if (ageYesBtn) {
+        ageYesBtn.addEventListener('click', function() {
+            fbq('trackCustom', 'AgeConfirmed');
+            console.log('%c AgeConfirmed отправлено', 'color: #28a745; font-weight: bold');
         });
-        
-        // 2. Клик по любой кнопке/ссылке, которая ведёт на партнёрский оффер (самое важное!)
-        document.querySelectorAll('a, button').forEach(element => {
-            element.addEventListener('click', function(e) {
-                // Проверяем, выглядит ли это как переход на внешний оффер
-                if (this.href && !this.href.includes(window.location.hostname)) {
-                    fbq('track', 'Lead');   // Meta любит это событие для оптимизации
-                    console.log('Lead отправлено');
-                }
-            });
+    }
+
+    // ====================== 2. Отслеживание всех переходов на офферы ======================
+    function sendLeadEvent() {
+        fbq('track', 'Lead');
+        console.log('%c Lead событие отправлено!', 'color: #fe53bb; font-weight: bold');
+    }
+
+    // Функция с задержкой для надёжной отправки события перед редиректом
+    function redirectWithEvent(url) {
+        sendLeadEvent();
+        setTimeout(() => {
+            window.location.href = url;
+        }, 280);   // 280мс — оптимальная задержка
+    }
+
+    // Переопределяем твои redirect-функции с отслеживанием
+    window.redirectToDatingOffer = function() {
+        redirectWithEvent('https://typpmrb.newsladyclub.com/nvc2z3p');
+    };
+
+    window.redirectToCasualOffer = function() {
+        redirectWithEvent('https://typpmrb.fun-meetconnect.com/nvnpmlz');
+    };
+
+    window.redirectToTTOnlyDatingOffer = function() {
+        redirectWithEvent('https://typpmrb.partner-hookup.org/nvzwyne');
+    };
+
+    // Дополнительно ловим кнопку "Reply"
+    const replyButton = document.querySelector('.new-message__button');
+    if (replyButton) {
+        replyButton.addEventListener('click', function() {
+            redirectWithEvent('https://typpmrb.newsladyclub.com/nvc2z3p');
         });
-      
-        function enterSite() {
-        // Сохраняем подтверждение в localStorage (чтобы не спрашивать каждый раз)
-            localStorage.setItem('ageVerified', 'true');
-            
-            // Скрываем оверлей
-            document.getElementById('age-gate').style.display = 'none';
-            
-            // Здесь можно добавить дополнительные действия (например, разблокировать видео и т.д.)
-        }
+    }
 
-        function leaveSite() {
-            // Можно перенаправить на другой сайт (например, Google)
-                window.location.href = "https://www.google.com";
-            }
+    // ====================== 3. Твои остальные функции ======================
+    window.enterSite = function() {
+        localStorage.setItem('ageVerified', 'true');
+        document.getElementById('age-gate').style.display = 'none';
+        console.log('%c Age gate passed', 'color: #28a745');
+    };
 
-            // Проверка при загрузке страницы
-        window.onload = function() {
-            if (localStorage.getItem('ageVerified') === 'true') {
-                document.getElementById('age-gate').style.display = 'none';
-            }
-        };
+    window.leaveSite = function() {
+        window.location.href = "https://www.google.com";
+    };
 
-        function nextStep(stepId) {
-            document.getElementById('step-interest').classList.add('hidden');
-            document.getElementById('step-gallery').classList.add('hidden');
-            document.getElementById(stepId).classList.remove('hidden');
-        }
+    window.nextStep = function(stepId) {
+        document.getElementById('step-interest').classList.add('hidden');
+        document.getElementById('step-gallery').classList.add('hidden');
+        document.getElementById(stepId).classList.remove('hidden');
+    };
 
+    // Проверка при загрузке страницы (возраст уже подтверждён)
+    if (localStorage.getItem('ageVerified') === 'true') {
+        const ageGate = document.getElementById('age-gate');
+        if (ageGate) ageGate.style.display = 'none';
+    }
 
-        function redirectToDatingOffer() {
-            // Твой основной смартлинк — он сам разберёт всё
-            window.location.href = 'https://typpmrb.newsladyclub.com/nvc2z3p';
-        }
-
-        function redirectToCasualOffer() {
-            // Твой основной смартлинк — он сам разберёт всё
-            window.location.href = 'https://typpmrb.fun-meetconnect.com/nvnpmlz';
-        }
-
-        function redirectToTTOnlyDatingOffer() {
-            // Твой основной смартлинк — он сам разберёт всё
-            window.location.href = 'https://typpmrb.partner-hookup.org/nvzwyne';
-        }
-    </script>
+});
+</script>
 </body>
 </html>
 
