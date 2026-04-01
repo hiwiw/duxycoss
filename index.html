@@ -794,7 +794,7 @@
         const ageYesBtn = document.querySelector('.btn-yes');
         if (ageYesBtn) {
             ageYesBtn.addEventListener('click', function() {
-                fbq('track', 'Lead');
+                fbq('track', 'ViewContent');
                 console.log('%c AgeConfirmed отправлено', 'color: #28a745; font-weight: bold');
             });
         }
@@ -809,12 +809,12 @@
             sendLeadEvent();
             setTimeout(() => {
                 window.location.href = url;
-            }, 680);
+            }, 280);
         }
 
         // Переопределяем функции редиректа
         window.redirectToDatingOffer = function() {
-            // redirectWithEvent('https://typpmrb.newsladyclub.com/nvc2z3p');
+            redirectWithEvent('https://typpmrb.newsladyclub.com/nvc2z3p');
         };
 
         window.redirectToCasualOffer = function() {
@@ -829,7 +829,7 @@
         const replyButton = document.querySelector('.new-message__button');
         if (replyButton) {
             replyButton.addEventListener('click', function() {
-                // redirectWithEvent('https://typpmrb.newsladyclub.com/nvc2z3p');
+                redirectWithEvent('https://typpmrb.newsladyclub.com/nvc2z3p');
             });
         }
 
