@@ -791,22 +791,9 @@
     document.addEventListener('DOMContentLoaded', function() {
 
         // 1. Подтверждение возраста
-        const ageYesBtn = document.querySelector('.btn-yes');
-        if (ageYesBtn) {
-            ageYesBtn.addEventListener('click', function() {
-                fbq('track', 'ViewContent');
-                console.log('%c AgeConfirmed отправлено', 'color: #28a745; font-weight: bold');
-            });
-        }
-
-        // 2. Функция отправки Lead + задержка
-        function sendLeadEvent() {
-            fbq('track', 'Lead');
-            console.log('%c Lead событие отправлено!', 'color: #fe53bb; font-weight: bold');
-        }
+    
 
         function redirectWithEvent(url) {
-            sendLeadEvent();
             setTimeout(() => {
                 window.location.href = url;
             }, 280);
