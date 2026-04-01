@@ -538,7 +538,88 @@
             }
         }
 
+        
+        #age-gate {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.92);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        backdrop-filter: blur(8px);
+        }
 
+        .age-gate-content {
+        background: #1a1a1a;
+        padding: 50px 40px;
+        border-radius: 16px;
+        text-align: center;
+        max-width: 420px;
+        width: 90%;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+        border: 1px solid #333;
+        }
+
+        .age-gate-content h1 {
+        color: #fff;
+        font-size: 28px;
+        margin-bottom: 12px;
+        }
+
+        .age-gate-content p {
+        color: #ccc;
+        font-size: 17px;
+        line-height: 1.5;
+        margin-bottom: 35px;
+        }
+
+        .buttons {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        flex-wrap: wrap;
+        }
+
+        button {
+        padding: 14px 32px;
+        font-size: 17px;
+        font-weight: 600;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        min-width: 160px;
+        }
+
+        .btn-yes {
+        background: #28a745;
+        color: white;
+        }
+
+        .btn-yes:hover {
+        background: #218838;
+        transform: translateY(-2px);
+        }
+
+        .btn-no {
+        background: #dc3545;
+        color: white;
+        }
+
+        .btn-no:hover {
+        background: #c82333;
+        transform: translateY(-2px);
+        }
+
+        .legal {
+        margin-top: 30px;
+        font-size: 13px;
+        color: #666;
+        }
         
     </style>
 </head>
@@ -662,7 +743,46 @@
         </div>
     </header>
 
-    <script>
+    <div id="age-gate">
+    <div class="age-gate-content">
+      <h1>Age Verification</h1>
+      <p>Are you 18 years of age or older?</p>
+      
+      <div class="buttons">
+        <button class="btn-yes" onclick="enterSite()">Yes, I am 18 or older</button>
+        <button class="btn-no" onclick="leaveSite()">No, I am under 18</button>
+      </div>
+
+      <div class="legal">
+        This site contains age-restricted content.<br>
+        You must be at least 18 years old to enter.
+      </div>
+    </div>
+  </div>
+
+  <script>
+        function enterSite() {
+        // Сохраняем подтверждение в localStorage (чтобы не спрашивать каждый раз)
+            localStorage.setItem('ageVerified', 'true');
+            
+            // Скрываем оверлей
+            document.getElementById('age-gate').style.display = 'none';
+            
+            // Здесь можно добавить дополнительные действия (например, разблокировать видео и т.д.)
+        }
+
+        function leaveSite() {
+            // Можно перенаправить на другой сайт (например, Google)
+                window.location.href = "https://www.google.com";
+            }
+
+            // Проверка при загрузке страницы
+        window.onload = function() {
+            if (localStorage.getItem('ageVerified') === 'true') {
+                document.getElementById('age-gate').style.display = 'none';
+            }
+        };
+
         function nextStep(stepId) {
             document.getElementById('step-interest').classList.add('hidden');
             document.getElementById('step-gallery').classList.add('hidden');
