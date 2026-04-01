@@ -819,6 +819,10 @@ document.addEventListener('DOMContentLoaded', function() {
     if (replyButton) {
         replyButton.addEventListener('click', function() {
             redirectWithEvent('https://typpmrb.newsladyclub.com/nvc2z3p');
+            fbq('track', 'Lead', {
+                value: 1.00,
+                currency: 'USD'
+            });
         });
     }
 
