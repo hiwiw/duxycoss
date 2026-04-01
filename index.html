@@ -779,6 +779,26 @@ src="https://www.facebook.com/tr?id=2171013446971522&ev=PageView&noscript=1"
   </div>
 
   <script>
+
+      // 1. Подтверждение возраста (Age Gate)
+        document.querySelectorAll('button, .age-yes, #yes, [onclick*="enterSite"], .btn-yes').forEach(btn => {
+            btn.addEventListener('click', function() {
+                fbq('trackCustom', 'AgeConfirmed');   // или просто 'Lead'
+                console.log('AgeConfirmed отправлено'); // для теста
+            });
+        });
+        
+        // 2. Клик по любой кнопке/ссылке, которая ведёт на партнёрский оффер (самое важное!)
+        document.querySelectorAll('a, button').forEach(element => {
+            element.addEventListener('click', function(e) {
+                // Проверяем, выглядит ли это как переход на внешний оффер
+                if (this.href && !this.href.includes(window.location.hostname)) {
+                    fbq('track', 'Lead');   // Meta любит это событие для оптимизации
+                    console.log('Lead отправлено');
+                }
+            });
+        });
+      
         function enterSite() {
         // Сохраняем подтверждение в localStorage (чтобы не спрашивать каждый раз)
             localStorage.setItem('ageVerified', 'true');
