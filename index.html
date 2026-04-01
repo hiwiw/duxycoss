@@ -794,7 +794,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Функция с задержкой для надёжной отправки события перед редиректом
     function redirectWithEvent(url) {
-        sendLeadEvent();
         setTimeout(() => {
             window.location.href = url;
         }, 400);   // 280мс — оптимальная задержка
