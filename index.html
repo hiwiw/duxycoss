@@ -793,7 +793,7 @@
         const ageYesBtn = document.querySelector('.btn-yes');
         if (ageYesBtn) {
             ageYesBtn.addEventListener('click', function() {
-                fbq('trackCustom', 'AgeConfirmed');
+                fbq('track', 'ViewContent');
                 console.log('%c AgeConfirmed отправлено', 'color: #28a745; font-weight: bold');
             });
         }
