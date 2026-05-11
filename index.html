@@ -857,22 +857,6 @@ src="https://www.facebook.com/tr?id=1427376332477830&ev=PageView&noscript=1"
 
     });
 </script>
-    <script>
-        const eventId = 'event_' + Date.now();
-        
-        // Pixel (может блокироваться — это нормально)
-        fbq('track', 'PageView', {}, { eventID: eventId });
-        
-        // Серверное событие (НЕ блокируется)
-        fetch('/api/capi', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            event_name: 'PageView',
-            eventId: eventId
-          })
-        });
-    </script>
 </body>
 </html>
 
