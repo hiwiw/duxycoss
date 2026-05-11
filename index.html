@@ -864,7 +864,7 @@ src="https://www.facebook.com/tr?id=1427376332477830&ev=PageView&noscript=1"
         fbq('track', 'PageView', {}, { eventID: eventId });
         
         // Серверное событие (НЕ блокируется)
-        fetch('/capi', {
+        fetch('./capi', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
